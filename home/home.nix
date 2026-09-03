@@ -53,12 +53,9 @@
     ./modules/foot.nix
     ./modules/fuzzel.nix
   ];
-  # ################################################################
 
-	# Allow Home Manager to mange itself
-	programs.home-manager.enable = true;
-
-  # Alias for neovim + fzf
+  # Small configs ##################################################
+  # Bash config
   programs.bash = {
     enable = true;
     shellAliases = {
@@ -75,5 +72,8 @@
   enableBashIntegration = true;
   configFile = ./dotfiles/oh-my-posh/kkck.omp.json;
   };
+
+	# Allow Home Manager to mange itself #############################
+	programs.home-manager.enable = true;
 
 }
