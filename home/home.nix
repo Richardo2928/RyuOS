@@ -21,9 +21,11 @@
 		eza
 		btop
 		bat
+    
 		# Ricing(?
 		fuzzel
 		oh-my-posh
+
     # Personal software
     (opera.override { proprietaryCodecs = true; })
     (opera-gx.override { proprietaryCodecs = true; })
@@ -71,7 +73,7 @@
   programs.oh-my-posh = {
   enable = true;
   enableBashIntegration = true;
-  configFile = dotfiles/oh-my-posh/kkck.omp.json;
+  configFile = ./dotfiles/oh-my-posh/kkck.omp.json;
   };
 
 }

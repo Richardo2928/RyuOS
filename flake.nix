@@ -9,15 +9,15 @@
 		home-manager = {
 			url = "github:nix-community/home-manager";
 			inputs.nixpkgs.follows = "nixpkgs";
-    };
+    	};
 
-    # Opera flake by YisuiDenghua
-    opera-flake = {
-      #url = "github:yisuidenghua/opera-flake";
-      url = "path:/home/ricardo/opera-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-  };
+		# Opera flake by YisuiDenghua
+		opera-flake = {
+		#url = "github:yisuidenghua/opera-flake";
+		url = "path:/home/ricardo/opera-flake";
+		inputs.nixpkgs.follows = "nixpkgs";
+		};
+  	};
 
 	outputs = { self, nixpkgs, home-manager, opera-flake,...}@inputs: {
 		nixosConfigurations = {
@@ -36,11 +36,11 @@
 						home-manager.users.ricardo = import ./home/home.nix;
 					}
 
-          # Opera overlay and enable propietary software
-          {
-            nixpkgs.overlays = [ opera-flake.overlays.default ];
-            nixpkgs.config.allowUnfree = true;
-          }
+					# Opera overlay and enable propietary software
+					{
+						nixpkgs.overlays = [ opera-flake.overlays.default ];
+						nixpkgs.config.allowUnfree = true;
+					}
 				];
 			};
 		};
