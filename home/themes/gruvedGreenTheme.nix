@@ -1,5 +1,5 @@
 {
-  
+  # Colorscheme: Guved Green
   bg_hard = "1d2021";       # Blacker background; codeboxes
   bg_primary = "282828";    # Main background
   bg_soft = "32302f";       # Lateral panels; header
