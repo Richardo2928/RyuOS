@@ -9,13 +9,13 @@
       "$schema" = "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json";
 
       secondary_prompt = {
-        template = "╰─\uf105 ";
+        template = "╰─ ";
         foreground = "#${palette.green_medium}";
         background = "transparent";
       };
 
       transient_prompt = {
-        template = "\ue285 ";
+        template = " ";
         foreground = "#${palette.green_medium}";
         background = "transparent";
       };
@@ -58,97 +58,97 @@
           segments = [
             {
               properties = {
-                alpine = "\uf300";
-                arch = "\uf303";
-                centos = "\uf304";
-                debian = "\uf306";
-                elementary = "\uf309";
-                fedora = "\uf30a";
-                gentoo = "\uf30d";
-                linux = "\ue712";
-                macos = "\ue711";
-                manjaro = "\uf312";
-                mint = "\uf30f";
-                opensuse = "\uf314";
-                raspbian = "\uf315";
-                ubuntu = "\uf31c";
-                windows = "\ue70f";
+                alpine = "";
+                arch = "";
+                centos = "";
+                debian = "";
+                elementary = "";
+                fedora = "";
+                gentoo = "";
+                linux = "";
+                macos = "";
+                manjaro = "";
+                mint = "";
+                opensuse = "";
+                raspbian = "";
+                ubuntu = "";
+                windows = "󰨡";
               };
-              leading_diamond = "\ue0b2";
-              template = " {{ if .WSL }}\ue712 on {{ end }}{{ .Icon }} ";
+              leading_diamond = "";
+              template = " {{ if .WSL }} on {{ end }}{{ .Icon }} ";
               foreground = "#${palette.green_medium}";
               background = "#${palette.bg_hard}";
               type = "os";
               style = "diamond";
             }
             {
-              leading_diamond = "\ue0b2";
-              template = " <#${palette.green_medium}>\ueb99</> {{ .UserName }} <#${palette.green_medium}>::</> <#${palette.green_medium}>\uf108</> {{ .HostName }} ";
+              leading_diamond = "";
+              template = " <#${palette.green_medium}></> {{ .UserName }} <#${palette.green_medium}>::</> <#${palette.green_medium}></> {{ .HostName }} ";
               foreground = "#${palette.blue_primary}";
               background = "#${palette.bg_elevated}";
               type = "session";
               style = "diamond";
             }
             {
-              template = " \uf489 {{ .Name }} ";
+              template = "  {{ .Name }} ";
               foreground = "#${palette.black_hard}";
-              powerline_symbol = "\ue0b0";
+              powerline_symbol = "";
               background = "#${palette.green_medium}";
               type = "shell";
               style = "powerline";
             }
             {
-              template = " \uf09c admin ";
+              template = "  admin ";
               foreground = "#${palette.black_hard}";
-              powerline_symbol = "\ue0b0";
+              powerline_symbol = "";
               background = "#${palette.green_medium}";
               type = "root";
               style = "powerline";
             }
             {
-              template = " \ue61e \ue61d cmake {{ .Full }} ";
+              template = "   cmake {{ .Full }} ";
               foreground = "#${palette.black_hard}";
-              powerline_symbol = "\ue0b0";
+              powerline_symbol = "";
               background = "#${palette.green_medium}";
               type = "cmake";
               style = "powerline";
             }
             {
               properties = { display_mode = "context"; };
-              template = " \ue73c {{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }} ";
+              template = "  {{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }} ";
               foreground = "#${palette.black_hard}";
-              powerline_symbol = "\ue0b0";
+              powerline_symbol = "";
               background = "#${palette.green_medium}";
               type = "python";
               style = "powerline";
             }
             {
-              template = " \u202d\ue626 {{ .Full }} ";
+              template = "  {{ .Full }} ";
               foreground = "#${palette.black_hard}";
-              powerline_symbol = "\ue0b0";
+              powerline_symbol = "";
               background = "#${palette.green_medium}";
               type = "go";
               style = "powerline";
             }
             {
-              template = " \ue7a8 {{ .Full }} ";
+              template = "  {{ .Full }} ";
               foreground = "#${palette.black_hard}";
-              powerline_symbol = "\ue0b0";
+              powerline_symbol = "";
               background = "#${palette.green_medium}";
               type = "rust";
               style = "powerline";
             }
             {
               properties = {
-                branch_icon = "\ue725 ";
+                branch_icon = " ";
                 fetch_stash_count = true;
                 fetch_status = true;
                 fetch_upstream_icon = true;
                 fetch_worktree_count = true;
               };
-              template = " {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ";
+              template = " {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} ";
               foreground = "#${palette.green_medium}";
-              powerline_symbol = "\ue0b0";
+              powerline_symbol = "";
               background = "#${palette.bg_hard}";
               type = "git";
               style = "powerline";
@@ -175,12 +175,12 @@
                 "{{if eq \"Full\" .State.String}}#${palette.green_medium}{{end}}"
               ];
               properties = {
-                charged_icon = "<#ffffff>\ue22f</> ";
-                charging_icon = "\ueb2d ";
-                discharging_icon = "<#ffff00>\uf244</> ";
+                charged_icon = "<#ffffff></> ";
+                charging_icon = " ";
+                discharging_icon = "<#ffff00></> ";
               };
               style = "plain";
-              template = "--[{{ if not .Error }}{{ .Icon }}{{ .Percentage }}{{ end }}{{ .Error }}\uf295]--";
+              template = "--[{{ if not .Error }}{{ .Icon }}{{ .Percentage }}{{ end }}{{ .Error }}]--";
               type = "battery";
             }
           ];
@@ -198,7 +198,7 @@
             }
             {
               properties = {
-                time_format = "<#${palette.fg_primary}>[ \ue641 15:04:05 ]</> <#${palette.green_medium}>[ </> \uf073 2 Jan, Monday <#${palette.green_medium}>]</> ";
+                time_format = "<#${palette.fg_primary}>[  15:04:05 ]</> <#${palette.green_medium}>[ </>  2 Jan, Monday <#${palette.green_medium}>]</> ";
               };
               template = "{{ .CurrentDate | date .Format }}";
               foreground = "#${palette.green_medium}";
@@ -215,8 +215,8 @@
           segments = [
             {
               properties = { always_enabled = true; };
-              leading_diamond = "\ue0b6";
-              template = "\ue266 ";
+              leading_diamond = "";
+              template = " ";
               foreground = "#${palette.bg_elevated}";
               background = "#${palette.cyan_primary}";
               type = "text";
@@ -227,7 +227,7 @@
                 style = "roundrock";
                 threshold = 0;
               };
-              trailing_diamond = "\ue0b4";
+              trailing_diamond = "";
               template = "RAM: {{ (div ((sub .PhysicalTotalMemory .PhysicalAvailableMemory)|float64) 1073741824.0) }}/{{ (div .PhysicalTotalMemory 1073741824.0) }}GB";
               foreground = "#${palette.blue_primary}";
               background = "#${palette.bg_hard}";
@@ -236,8 +236,8 @@
             }
             {
               properties = { always_enabled = true; };
-              leading_diamond = "\ue0b6";
-              template = " {{ if gt .Code 0 }}\uf00d{{ else }}\uf00c{{ end }} ";
+              leading_diamond = "";
+              template = " {{ if gt .Code 0 }}{{ else }}{{ end }} ";
               foreground = "#${palette.green_medium}";
               background = "#${palette.bg_elevated}";
               type = "status";
@@ -250,8 +250,8 @@
                 style = "roundrock";
                 threshold = 0;
               };
-              trailing_diamond = "\ue0b4";
-              template = " \uf252 {{ .FormattedMs }} ";
+              trailing_diamond = "";
+              template = "  {{ .FormattedMs }} ";
               foreground = "#${palette.blue_primary}";
               background = "#${palette.bg_subtle}";
               type = "executiontime";
@@ -272,13 +272,13 @@
             }
             {
               properties = {
-                folder_icon = " \uf07c ";
-                folder_separator_icon = " \uf061 ";
-                home_icon = "\ueb06 ";
+                folder_icon = "  ";
+                folder_separator_icon = "  ";
+                home_icon = "  ";
                 max_depth = 3;
                 style = "agnoster_short";
               };
-              leading_diamond = "[<#${palette.green_medium}> \uf07b </><#${palette.blue_primary}> in </>";
+              leading_diamond = "[<#${palette.green_medium}>  </><#${palette.blue_primary}> in </>";
               template = " {{ .Path }} <#${palette.fg_primary}>]</>";
               foreground = "#${palette.blue_primary}";
               type = "path";
