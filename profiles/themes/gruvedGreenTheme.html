@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Guide</title>
+    <style>
+        :root {
+            --bg-hard: #1d2021;
+            --bg-primary: #282828;
+            --bg-soft: #32302f;
+            --bg-elevated: #3c3836;
+            --bg-high: #504945;
+            --fg-primary: #ebdbb2;
+            --fg-muted: #7c6f64;
+            --fg-bright: #fbf1c7;
+            --green-light: #d8f8b0;
+            --red-primary: #cc241d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--fg-primary);
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--bg-high);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--fg-bright);
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+
+        header p {
+            color: var(--fg-muted);
+            font-size: 1.1rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--green-light);
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 4px solid var(--bg-high);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .color-card {
+            background-color: var(--bg-elevated);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid var(--bg-high);
+        }
+
+        .color-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .swatch {
+            width: 90px;
+            min-height: 100%;
+            flex-shrink: 0;
+        }
+
+        .info {
+            padding: 1rem 1.25rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .var-name {
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--fg-bright);
+            margin-bottom: 0.25rem;
+        }
+
+        .hex-code {
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 0.9rem;
+            color: var(--fg-muted);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.2s;
+            width: fit-content;
+        }
+
+        .hex-code:hover {
+            color: var(--fg-primary);
+        }
+
+        .hex-code::after {
+            content: "📋";
+            font-size: 0.8rem;
+            opacity: 0.5;
+        }
+
+        .hex-code:hover::after {
+            opacity: 1;
+        }
+
+        .description {
+            font-size: 0.85rem;
+            color: var(--fg-muted);
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        /* Toast notification for copy */
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: var(--bg-soft);
+            color: var(--fg-bright);
+            text-align: center;
+            border-radius: 8px;
+            padding: 12px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-size: 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            border: 1px solid var(--bg-high);
+            opacity: 0;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        #toast.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Light mode specific text adjustments */
+        .light-mode-text {
+            color: #3c3836 !important; 
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🎨 Gruved Green Palette</h1>
+        <p>Click on any HEX code to copy it to the clipboard.</p>
+    </header>
+
+    <main id="app"></main>
+
+    <div id="toast">HEX copied to clipboard!</div>
+
+    <script>
+        const palette = {
+            "Backgrounds (Dark)": [
+                { name: "bg_hard", hex: "1d2021", desc: "Blacker background; codeboxes" },
+                { name: "bg_primary", hex: "282828", desc: "Main background" },
+                { name: "bg_soft", hex: "32302f", desc: "Lateral panels; header" },
+                { name: "bg_elevated", hex: "3c3836", desc: "Buttons; elevated elements" },
+                { name: "bg_high", hex: "504945", desc: "Borders; selections; inactive" },
+                { name: "bg_subtle", hex: "665c54", desc: "Inactive lines" }
+            ],
+            "Foregrounds": [
+                { name: "fg_muted", hex: "7c6f64", desc: "Comments; deactivated text" },
+                { name: "fg_primary", hex: "ebdbb2", desc: "Main text" },
+                { name: "fg_subtle", hex: "928374", desc: "Punctuation; secondary text" },
+                { name: "fg_secondary", hex: "a89984", desc: "Tertiary text" },
+                { name: "fg_bright", hex: "fbf1c7", desc: "Bright text; foreground" },
+                { name: "fg_lightest", hex: "f0f5d7", desc: "Lighter text" }
+            ],
+            "Main Accents (Greens)": [
+                { name: "green_deep", hex: "0fa17a", desc: "Main dark accent; focused border" },
+                { name: "green_forest", hex: "427b58", desc: "For some light mode" },
+                { name: "green_medium", hex: "49ca94", desc: "Main Accent; active workspace" },
+                { name: "green_aqua", hex: "71dda0", desc: "\"Variable 3\"; \"graph arrows\"..." },
+                { name: "green_mint", hex: "a4eca8", desc: "Soft accent; header text; properties" },
+                { name: "green_light", hex: "d8f8b0", desc: "Highlights; \"built-ins\"" },
+                { name: "green_pale", hex: "d8f8a8", desc: "\"Extreme\" light green" }
+            ],
+            "Reds (Errors & Alerts)": [
+                { name: "red_dark", hex: "9d0006", desc: "Keywords, \"errors\" (light mode)" },
+                { name: "red_primary", hex: "cc241d", desc: "Errors; \"unresolved\"" },
+                { name: "red_bright", hex: "fb4934", desc: "Urgent alerts; keywords; operators" }
+            ],
+            "Yellows (Warnings & Types)": [
+                { name: "yellow_dark", hex: "79740e", desc: "Types; strings (light mode)" }, // Corregido de 79740r
+                { name: "yellow_medium", hex: "b57614", desc: "Functions; numbers (light mode)" },
+                { name: "yellow_warm", hex: "d79921", desc: "Intermediate warnings" },
+                { name: "yellow_primary", hex: "fabd2f", desc: "Types; functions; toolbar" },
+                { name: "yellow_pale", hex: "d8f8b0", desc: "\"Extreme\" light yellow" }
+            ],
+            "Oranges": [
+                { name: "orange_dark", hex: "af3a03", desc: "Important; qualifiers (light mode)" },
+                { name: "orange_medium", hex: "d65d0e", desc: "Secondary alerts" },
+                { name: "orange_primary", hex: "fe8019", desc: "Important; cursor; qualifiers" },
+                { name: "orange_soft", hex: "d58c5d", desc: "Soft orange; neutral alt" }
+            ],
+            "Blues & Cyans": [
+                { name: "blue_dark", hex: "076678", desc: "Variables; meta (light mode)" },
+                { name: "blue_medium", hex: "458588", desc: "Base blue Gruvbox" },
+                { name: "blue_primary", hex: "83a598", desc: "Variables; neutral; meta" },
+                { name: "cyan_dark", hex: "0fa17a", desc: "Dark cyan (light mode)" },
+                { name: "cyan_medium", hex: "71dda0", desc: "Base cyan Gruvbox" },
+                { name: "cyan_primary", hex: "8ec07c", desc: "\"Variable 2\"" }
+            ],
+            "Magentas & Purples": [
+                { name: "purple_dark", hex: "8f3f71", desc: "Numbers; \"atoms\" (light mode)" },
+                { name: "purple_medium", hex: "b16286", desc: "Base purple Gruvbox" },
+                { name: "purple_primary", hex: "d3869b", desc: "Numbers; \"atoms\"; magenta terminal" }
+            ],
+            "Blacks & Grays": [
+                { name: "black_hard", hex: "141414", desc: "Pure black (avoid with text)" },
+                { name: "black_primary", hex: "282828", desc: "Shared with bg_primary" }
+            ],
+            "Light Backgrounds (Light Mode)": [
+                { name: "light_hard", hex: "f9f5d7", desc: "Lighter background; modals" },
+                { name: "light_primary", hex: "fbf1c7", desc: "Main background light mode" },
+                { name: "light_soft", hex: "f2e6bc", desc: "Panels; codeboxes" },
+                { name: "light_medium", hex: "ebdbb2", desc: "Cards; secondary alt" },
+                { name: "light_border", hex: "d5c4a1", desc: "Borders; dividers" },
+                { name: "light_muted", hex: "bdae93", desc: "Subtle borders; \"graph lines\"" }
+            ]
+        };
+
+        const app = document.getElementById('app');
+
+        // Función para determinar si el texto sobre el color debe ser oscuro o claro
+        function getLuminance(hex) {
+            const r = parseInt(hex.substr(0, 2), 16) / 255;
+            const g = parseInt(hex.substr(2, 2), 16) / 255;
+            const b = parseInt(hex.substr(4, 2), 16) / 255;
+            return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2000);
+        }
+
+        function copyHex(hex) {
+            navigator.clipboard.writeText(`#${hex}`).then(() => {
+                showToast(`¡Copiado: #${hex}!`);
+            });
+        }
+
+        // Renderizar la paleta
+        Object.keys(palette).forEach(section => {
+            const sectionEl = document.createElement('section');
+            sectionEl.className = 'section';
+            
+            const titleEl = document.createElement('h2');
+            titleEl.className = 'section-title';
+            titleEl.textContent = section;
+            sectionEl.appendChild(titleEl);
+
+            const gridEl = document.createElement('div');
+            gridEl.className = 'grid';
+
+            palette[section].forEach(color => {
+                const isLight = getLuminance(color.hex) > 0.6;
+                
+                const card = document.createElement('div');
+                card.className = 'color-card';
+                
+                card.innerHTML = `
+                    <div class="swatch" style="background-color: #${color.hex};"></div>
+                    <div class="info">
+                        <div class="var-name">${color.name}</div>
+                        <div class="hex-code" onclick="copyHex('${color.hex}')" title="Clic para copiar">#${color.hex}</div>
+                        <div class="description">${color.desc}</div>
+                    </div>
+                `;
+                gridEl.appendChild(card);
+            });
+
+            sectionEl.appendChild(gridEl);
+            app.appendChild(sectionEl);
+        });
+    </script>
+</body>
+</html>
