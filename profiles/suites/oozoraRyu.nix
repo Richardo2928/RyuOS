@@ -11,6 +11,7 @@
 
     discord
     zoom-us
+    zapzap #* old version, but works fine
 
     krita
     inkscape
