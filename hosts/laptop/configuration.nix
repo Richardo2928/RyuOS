@@ -49,8 +49,9 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  ##################################################################
-  ##################################################################
+  #*################################################################
+  #*################################################################
+  #* Packages ###################
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -62,11 +63,13 @@
     fuzzel
   ];
 
+  #* Fonts ######################
   # Adding Nerd Fonts
   fonts.packages = with pkgs;[
    nerd-fonts.jetbrains-mono
   ];
 
+  #* Pipewire ##################
   # Enable sound with pipewire
   security.rtkit.enable = true;
   services.pipewire = {
@@ -76,6 +79,7 @@
    pulse.enable = true;
   };
 
+  #* Niri #######################
   # Enable Niri and Wayland support
   programs.niri.enable = true;
   # Enable Waybar
@@ -88,6 +92,7 @@
    extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
 
+  #* Greetd and Tuigreet ########
   # Start manager with greetd and tuigreet
   services.greetd = {
    enable = true;
