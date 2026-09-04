@@ -13,9 +13,9 @@
 
   # Modules
   imports = [
-    ../modules/nvim
-    ../modules/btop.nix
-    ../modules/oh-my-posh.nix
+    ../../modules/nvim
+    ../../modules/btop.nix
+    ../../modules/oh-my-posh.nix
   ];
 
   # Packages
