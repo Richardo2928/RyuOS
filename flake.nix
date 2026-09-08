@@ -14,12 +14,15 @@
     # Opera flake by YisuiDenghua
     opera-flake = {
       #url = "github:yisuidenghua/opera-flake";
-      url = "path:/home/ricardo/opera-flake";
+      url = "path:/home/ricardo/opera-flake"; # TODO: stop depending on a local repo to update opera
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # wlctl flake by aashish-thapa
+    wlctl-flake.url = "github:aashish-thapa/wlctl";
   };
 
-  outputs = { self, nixpkgs, home-manager, opera-flake, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, opera-flake, wlctl-flake, ... }@inputs:
   let
     system = "x86_64-linux";
 
@@ -40,6 +43,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = { inherit inputs; };
           home-manager.users.ricardo = import ./homes/laptop.nix;
         }
 

@@ -1,4 +1,4 @@
-{ pkgs, ...}:
+{ pkgs, palette, ...}:
 {
   # TODO: Add palette to the module args, and use it to set the colors in the config
   #! Remember to include any packages that your config.kdl invokes via spawn-at-startup, if any
@@ -178,13 +178,13 @@
           // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
           // Color of the ring on the active monitor.
-          active-color "#7fc8ff"
+          //active-color "#${palette.green_medium}"
 
           // Color of the ring on inactive monitors.
           //
           // The focus ring only draws around the active window, so the only place
           // where you can see its inactive-color is on other monitors.
-          inactive-color "#505050"
+          inactive-color "#${palette.blue_primary}"
 
           // You can also use gradients. They take precedence over solid colors.
           // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
@@ -193,7 +193,7 @@
           // You can use any CSS linear-gradient tool on the web to set these up.
           // Changing the color space is also supported, check the wiki for more info.
           //
-          // active-gradient from="#80c8ff" to="#c7ff7f" angle=45
+          active-gradient from="#${palette.green_medium}" to="#${palette.green_light}" angle=180
 
           // You can also color the gradient relative to the entire view
           // of the workspace, rather than relative to just the window itself.

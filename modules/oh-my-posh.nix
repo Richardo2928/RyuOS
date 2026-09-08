@@ -140,7 +140,7 @@
             }
             {
               properties = {
-                branch_icon = " ";
+                branch_icon = "  ";
                 fetch_stash_count = true;
                 fetch_status = true;
                 fetch_upstream_icon = true;

@@ -298,6 +298,7 @@ in
           tooltip-format-dissconected = "Wi-Fi Disconnected";
           tooltip-format-disabled = "Wi-Fi Off";
           tooltip-format-ethernet = "<b>Interface</b>: {ifname}";
+          on-click = "foot wlctl";
         };
         ## Bluetooth
         "bluetooth" = {
