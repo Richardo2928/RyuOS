@@ -33,7 +33,7 @@
           }
 
           // Enable numlock on startup, omitting this setting disables it.
-          numlock
+          //numlock
       }
 
       // Next sections include libinput settings.
@@ -130,7 +130,7 @@
       // - "always", the focused column will always be centered.
       // - "on-overflow", focusing a column will center it if it doesn't fit
       //   together with the previously focused column.
-      center-focused-column "always"
+      center-focused-column "on-overflow"
 
       // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
       preset-column-widths {
@@ -140,6 +140,7 @@
           proportion 0.33333
           proportion 0.5
           proportion 0.66667
+          proportion 1
 
           // Fixed sets the width in logical pixels exactly.
           // fixed 1920
@@ -151,7 +152,6 @@
       // You can change the default width of the new windows.
       default-column-width { proportion 0.5; }
       // If you leave the brackets empty, the windows themselves will decide their initial width.
-      // default-column-width {}
 
       // By default focus ring and border are rendered as a solid background rectangle
       // behind windows. That is, they will show up through semitransparent windows.
@@ -294,7 +294,7 @@
   // Additionally, clients will be informed that they are tiled, removing some client-side rounded corners.
   // This option will also fix border/focus ring drawing behind some semitransparent windows.
   // After enabling or disabling this, you need to restart the apps for this to take effect.
-  // prefer-no-csd
+  prefer-no-csd
 
   // You can change the path where screenshots are saved.
   // A ~ at the front will be expanded to the home directory.
