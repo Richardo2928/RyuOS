@@ -1,10 +1,10 @@
 { pkgs, palette, inputs, ... }:
 {
   imports = [
-    ../../modules/niri.nix
-    ../../modules/fuzzel.nix
-    ../../modules/foot.nix
-    ../../modules/waybar
+    ../../modules/rice/niri.nix
+    ../../modules/rice/fuzzel.nix
+    ../../modules/rice/foot.nix
+    ../../modules/rice/waybar
   ];
 
   home.packages = [
