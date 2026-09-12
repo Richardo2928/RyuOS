@@ -1,6 +1,7 @@
 {
   description = "Reproducible NixOS and Home Manager configuration";
-
+  # *###############################################################
+  # *###############################################################
   inputs = {
     # NixOS packages channel
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -21,7 +22,8 @@
     # wlctl flake by aashish-thapa
     wlctl-flake.url = "github:aashish-thapa/wlctl";
   };
-
+  # *###############################################################
+  # *###############################################################
   outputs = { self, nixpkgs, home-manager, opera-flake, wlctl-flake, ... }@inputs:
   let
     system = "x86_64-linux";
@@ -59,4 +61,6 @@
       modules = [ ./homes/rdebian.nix ];
     };
   };
+  # *###############################################################
+  #*###############################################################
 }
