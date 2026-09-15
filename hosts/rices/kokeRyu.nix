@@ -9,5 +9,7 @@
 
   home.packages = [
     inputs.wlctl-flake.packages.${pkgs.system}.default
+    foot
+    fuzzel
   ];
 }
