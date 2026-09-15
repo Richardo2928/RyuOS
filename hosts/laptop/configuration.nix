@@ -8,13 +8,14 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ../rices/kokeRyu.nix
     ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "nixLaptop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -56,67 +57,10 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    neovim
-    git
-    foot
-    fuzzel
   ];
-
-  #* Fonts ######################
-  # Adding Nerd Fonts
-  fonts.packages = with pkgs;[
-   nerd-fonts.jetbrains-mono
-  ];
-
-  #* Pipewire ##################
-  # Enable sound with pipewire
-  security.rtkit.enable = true;
-  services.pipewire = {
-   enable = true;
-   alsa.enable = true;
-   alsa.support32Bit = true;
-   pulse.enable = true;
-  };
-
-  #* Niri #######################
-  # Enable Niri and Wayland support
-  programs.niri.enable = true;
-  # Enable Waybar
-  programs.waybar.enable = true;
-
-  # Destop portal XDG
-  xdg.portal = {
-   enable = true;
-   wlr.enable =true;
-   extraPortals = [pkgs.xdg-desktop-portal-gtk];
-  };
-
-  #* Greetd and Tuigreet ########
-  # Start manager with greetd and tuigreet
-  services.greetd = {
-   enable = true;
-   settings = {
-    default_session = {
-    command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd niri-session";
-    user = "greeter";
-    };
-   };
-  };
-
-  # Avoid messages to cover tuigreet
-  systemd.services.greetd.serviceConfig = {
-   Type = "idle";
-   StandardInput = "tty";
-   StandardOutput = "tty";
-   StandardError = "journal";
-   TTYReset = true;
-   TTYVHangup = true;
-   TTYVTDisallocate = true;
-  };
 
   # Flakes Time!
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ]; 
   #*################################################################
   #*################################################################
   # Some programs need SUID wrappers, can be configured further or are
