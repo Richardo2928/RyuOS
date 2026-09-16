@@ -53,6 +53,7 @@
     nixosConfigurations = {
       laptop = mkHost "laptop";
       #rdebian = mkHost "rdebian";
+      kokeVM = mkHost "kokeVM";
     };
 
     homeConfigurations.rDebian = home-manager.lib.homeManagerConfiguration {
