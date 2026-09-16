@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
-    ../../modules/foot.nix
+    ./modules/foot.nix
   ];
 
   home.packages = with pkgs; [
