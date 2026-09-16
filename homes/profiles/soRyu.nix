@@ -6,16 +6,16 @@
 	home.stateVersion = "26.05";
 
   # Add my custom theme palette to the module args
-  _module.args.palette = import ../themes/gruvedGreenTheme.nix;
+  _module.args.palette = import ./themes/gruvedGreenTheme.nix;
 
   # Allow unfree software
   nixpkgs.config.allowUnfree = true;
 
   # Modules
   imports = [
-    ../../modules/nvim
-    ../../modules/btop.nix
-    ../../modules/oh-my-posh.nix
+    ./modules/nvim
+    ./modules/btop.nix
+    ./modules/oh-my-posh.nix
   ];
 
   # Packages
