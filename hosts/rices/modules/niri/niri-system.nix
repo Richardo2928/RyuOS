@@ -1,7 +1,8 @@
+#* Niri #######################
+# hosts/rices/modules/niri/niri-system.nix
 { pkgs, ... }:
 {
-  #* Niri #######################
-  # Enable Niri and Wayland support
+  # Enable Niri
   programs.niri.enable = true;
   
   # Destop portal XDG
