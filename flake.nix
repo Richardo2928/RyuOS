@@ -14,8 +14,7 @@
 
     # Opera flake by YisuiDenghua
     opera-flake = {
-      #url = "github:yisuidenghua/opera-flake";
-      url = "path:/home/ricardo/opera-flake"; # TODO: stop depending on a local repo to update opera
+      url = "github:Richardo2928/opera-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
