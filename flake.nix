@@ -28,36 +28,36 @@
   let
     system = "x86_64-linux";
 
-    # pkgs con el overlay de Opera ya aplicado, para usar en homeConfigurations standalone
-    pkgsWithOverlays = import nixpkgs {
-      inherit system;
-      overlays = [ opera-flake.overlays.default ];
-    };
-  in {
-    nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
-      inherit system;
-      modules = [
-        # System base config
-        ./hosts/laptop/configuration.nix
+    # *---------------------------------------------------------------
+    username = "ricardo";
+    #ryuosRoot = "/home/${username}/RyuOS";
 
-        # Home Manager integration
+    # Helper
+    mkHost = host: nixpkgs.lib.nixosSystem {
+      inherit system;
+
+      specialArgs = { inherit inputs username; }; # Maybe ryuosRoot, until I try it on a non-NixOS system
+
+      modules = [
+        ./hosts/${host}/configuration.nix
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = { inherit inputs; };
-          home-manager.users.ricardo = import ./homes/laptop.nix;
-        }
-
-        # Opera overlay
-        {
-          nixpkgs.overlays = [ opera-flake.overlays.default ];
+          home-manager.extraSpecialArgs = { inherit inputs username; }; # Again, maybe ryuosRoot, until I try it on a non-NixOS system
+          home-manager.users.${username} = import ./homes/${host}.nix;
         }
       ];
     };
+    # *---------------------------------------------------------------
+  in {
+    nixosConfigurations = {
+      laptop = mkHost "laptop";
+      #rdebian = mkHost "rdebian";
+    };
 
     homeConfigurations.rDebian = home-manager.lib.homeManagerConfiguration {
-      pkgs = pkgsWithOverlays;
+      extraSpecialArgs = { inherit inputs username; }; # Again, maybe ryuosRoot, until I try it on a non-NixOS system
       modules = [ ./homes/rdebian.nix ];
     };
   };

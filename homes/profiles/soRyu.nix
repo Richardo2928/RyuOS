@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 {
   # Basic user config
-	home.username = "ricardo";
-	home.homeDirectory = "/home/ricardo";
+	home.username = "${username}";
+	home.homeDirectory = "/home/${username}";
 	home.stateVersion = "26.05";
 
   # Add my custom theme palette to the module args
