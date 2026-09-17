@@ -1,9 +1,5 @@
 { pkgs, inputs, ... }:
 {
-  imports = [
-    ./modules/foot.nix
-  ];
-
   home.packages = with pkgs; [
     obsidian
 
@@ -15,6 +11,5 @@
   ] ++ [
     inputs.opera-flake.packages.${pkgs.system}.opera
     inputs.opera-flake.packages.${pkgs.system}.opera-gx
-  ];
-  
+  ]; 
 }

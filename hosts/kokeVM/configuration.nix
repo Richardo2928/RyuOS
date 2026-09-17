@@ -21,12 +21,12 @@
     ];
   };
 
-  # ################################################################
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ../rices/kokeRyu.nix
+      ../profiles/rices/kokeRyu.nix
     ];
+  # ################################################################
 
   # Bootloader.
   boot.loader.grub.enable = true;

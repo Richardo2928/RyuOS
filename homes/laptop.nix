@@ -3,9 +3,11 @@
   imports = [
     # Profiles
     ## Core
-    ./profiles/soRyu.nix
-    ### Suites
-    ./profiles/kozoraRyu.nix
-    ./profiles/shinRyu.nix
+    ./profiles/core/soRyu.nix
+    ## Suites
+    ./profiles/suites/kozoraRyu.nix
+    ./profiles/suites/shinRyu.nix
+    ## Rices
+    ./profiles/rices/kokeRyu.nix
   ];
 }
