@@ -29,13 +29,13 @@
 
     # *---------------------------------------------------------------
     username = "ricardo";
-    #ryuosRoot = "/home/${username}/RyuOS";
+    ryuosRoot = "/home/${username}/RyuOS";
 
     # Helper
     mkHost = host: nixpkgs.lib.nixosSystem {
       inherit system;
 
-      specialArgs = { inherit inputs username; }; # Maybe ryuosRoot, until I try it on a non-NixOS system
+      specialArgs = { inherit inputs username ryuosRoot; };
 
       modules = [
         ./hosts/${host}/configuration.nix
@@ -43,7 +43,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = { inherit inputs username; }; # Again, maybe ryuosRoot, until I try it on a non-NixOS system
+          home-manager.extraSpecialArgs = { inherit inputs username ryuosRoot; };
           home-manager.users.${username} = import ./homes/${host}.nix;
         }
       ];
@@ -57,7 +57,7 @@
     };
 
     homeConfigurations.rDebian = home-manager.lib.homeManagerConfiguration {
-      extraSpecialArgs = { inherit inputs username; }; # Again, maybe ryuosRoot, until I try it on a non-NixOS system
+      extraSpecialArgs = { inherit inputs username ryuosRoot; };
       modules = [ ./homes/rdebian.nix ];
     };
   };
