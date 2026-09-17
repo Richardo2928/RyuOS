@@ -59,14 +59,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1787373436,
-        "narHash": "sha256-JiTuZPlpjFu24WoU3zLBaR77XZUh/ZubGYixbXID5DI=",
-        "path": "/home/ricardo/opera-flake",
-        "type": "path"
+        "lastModified": 1789540764,
+        "narHash": "sha256-IfkLWs8bFpoM0VsyJi6gQ9Xch7VWxB9ynrexRB/gzPc=",
+        "owner": "Richardo2928",
+        "repo": "opera-flake",
+        "rev": "a8eb0e53fcdb05c77608939090ba4503fc6209ea",
+        "type": "github"
       },
       "original": {
-        "path": "/home/ricardo/opera-flake",
-        "type": "path"
+        "owner": "Richardo2928",
+        "repo": "opera-flake",
+        "type": "github"
       }
     },
     "root": {

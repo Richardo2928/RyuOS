@@ -7,6 +7,8 @@
   home.packages = with pkgs; [
     obsidian
 
+    github-cli
+
     #texlive.combined.scheme-full
 
     anki

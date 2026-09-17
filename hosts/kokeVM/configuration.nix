@@ -5,9 +5,27 @@
 { config, pkgs, ... }:
 
 {
+  # ################################################################
+  # Flakes Time!
+  nix.settings.experimental-features =  [ "nix-command" "flakes" ];
+
+  # vm
+  services.qemuGuest.enable = true;
+
+  boot.initrd.kernelModules = [ "virtio-gpu" "virtio-pci" ];
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      mesa.drivers
+      virglrenderer
+    ];
+  };
+
+  # ################################################################
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ../rices/kokeRyu.nix
     ];
 
   # Bootloader.
@@ -67,12 +85,6 @@
   #  wget
      git
   ];
-
-  # Flakes Time!
-  nix.settings.experimental-features =  [ "nix-command" "flakes" ];
-
-  # vm
-  services.qemuGuest.enable = true;  
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

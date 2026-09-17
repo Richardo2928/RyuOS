@@ -7,5 +7,7 @@
     # Suites
     ./profiles/kozoraRyu.nix
     ./profiles/shinRyu.nix
+    # Rices
+    ./profiles/kokeRyu.nix
   ];
 }

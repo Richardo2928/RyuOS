@@ -3,11 +3,11 @@
 // Check the wiki for a full description of the configuration:
 // https://niri-wm.github.io/niri/Configuration:-Introduction
 
-include "./input.kdl"
-include "./outputs.kdl"
-include "./layouts.kdl"
-include "./window-rules.kdl"
-include "./bindings.kdl"
+include "input.kdl"
+include "outputs.kdl"
+include "layout.kdl"
+include "window-rules.kdl"
+include "bindings.kdl"
 
 // Add lines like this to spawn processes at startup.
 // Note that running niri as a session supports xdg-desktop-autostart,
