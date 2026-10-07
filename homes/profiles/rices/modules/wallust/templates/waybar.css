@@ -1,0 +1,6 @@
+@define-color background {{color0}};
+@define-color background1 {{color0 | lighten(0.1)}};
+@define-color background2 {{color0 | lighten(0.2)}};
+@define-color background3 {{color0 | lighten(0.3)}};
+
+@define-color accent {{color2}};

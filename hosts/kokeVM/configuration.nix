@@ -24,7 +24,9 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      # Core
       ../profiles/core/nixCore.nix
+      # Rice
       ../profiles/rices/kokeRyu.nix
     ];
   # ################################################################

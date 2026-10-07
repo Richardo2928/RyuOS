@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ryuosRoot, ... }:
 let
   niriPill = pkgs.writeShellApplication {
     name = "niri-pill";
@@ -7,6 +7,8 @@ let
   };
 in
 {
+
+  xdg.configFile."waybar/style.css".source = config.lib.file.mkOutOfStoreSymlink "${ryuosRoot}/homes/profiles/rices/modules/waybar/style.css";
 
   # Waybar config
   programs.waybar = {

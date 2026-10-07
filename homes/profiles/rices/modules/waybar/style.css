@@ -1,0 +1,208 @@
+@import "/home/ricardo/.cache/wallust/waybar/colors.css";
+
+* {
+  color: @foreground;
+  font-family: "JetBrainsMono NF", monospace;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+#waybar {
+  background-color: @background;
+}
+
+#waybar > box {
+  margin: 0;
+}
+
+.module {
+  /* Vertically align modules */
+  margin-bottom: -1px;
+}
+
+#waybar.windowPill {
+  background-color: @background;
+}
+
+/* DIVIDERS ################################################## */
+#custom-left.bg-1, 
+#custom-t-down,
+#custom-tl-left,
+#custom-tc-right.bg-1,
+#custom-tc-left.bg-1, 
+#custom-tr-left, 
+#custom-right.bg-1,
+#custom-left.bg-2,
+#custom-right.bg-2,
+#custom-right.rbg-2,
+#custom-left.inverse, 
+#custom-right.inverse,
+#custom-left.accent,
+#custom-right.accent,
+#custom-right.bg-3,
+#custom-left.inverse-accent {
+  font-size: 26px;
+}
+
+/* SPECIAL DIVIDERS*/
+#custom-left.bg-1 {
+  background-color: @accent;
+  color: @background1;
+}
+
+#custom-t-down.1,
+#custom-t-down.2 {
+  background-color: @background;
+  color: @accent;
+}
+
+/* LV 1 DIVIDERS*/
+#custom-tl-left,
+#custom-tc-left.bg-1, 
+#custom-tr-left, 
+#custom-tc-right.bg-1 {
+  background-color: @background;
+  color: @background1;
+}
+
+#custom-right.bg-1 {
+  background-color: @background2;
+  color: @background1;
+}
+
+/* LV 2 DIVIDERS */
+#custom-left.bg-2 {
+  background-color: @background1;
+  color: @background2;
+}
+
+#custom-right.rbg-2 {
+  background-color: @background3;
+  color: @background2;
+}
+
+#custom-right.bg-2 {
+  background-color: @background1;
+  color: @background2;
+}
+
+/* LV 3 DIVIDERS*/
+#custom-left.inverse, 
+#custom-right.inverse {
+  background-color: @background;
+  color: @background2;
+}
+
+#custom-left.accent,
+#custom-right.accent {
+  color: @accent;
+}
+
+#custom-left.inverse-accent {
+  background-color: @background3;
+  color: @accent;
+}
+
+/* MODULES ################################################### */
+/* SPEIAL MODULES */
+#custom-shutdown, 
+#custom-reboot,
+#custom-suspend,
+#custom-lock, 
+#custom-shutdown {
+  padding: 0 16px;
+  background-color: @accent;
+  color: @background;
+}
+
+#custom-reboot:hover,
+#custom-suspend:hover,
+#custom-lock:hover {
+  background-color: @color0;
+  color: @color1;
+}
+
+#custom-shutdown:hover {
+  background-color: @color0;
+  color: @color1;
+}
+
+#mpris {
+  background-color: @color2;
+  color: @background1;
+  font-weight: normal;
+  padding: 0 12px;
+}
+
+#custom-connections {
+  font-size: 23px;
+}
+
+#custom-connections,
+#network,
+#bluetooth,
+#language {
+  background-color: @accent;
+  color: @background;
+}
+
+/* LV 1 MODULES*/
+#workspaces {
+  padding: 0 1px;
+  background-color: @background1;
+}
+
+#workspaces button label,
+#workspaces button {
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+#workspaces button.focused:hover,
+#workspaces button.active:hover,
+#workspaces button:hover,
+#workspaces button:hover label {
+  /* OVERRIDES THE DEFAULT GTK */
+  background: none;
+
+  /* a */
+  background-color: @background3;
+  color: @accent;
+}
+
+#memory,
+#clock.date,
+#pulseaudio.output,
+#pulseaudio.input {
+  background-color: @background1;
+}
+
+/* LV 2 MODULES */
+#cpu,
+#clock.time,
+#backlight {
+  background-color: @background2;
+}
+
+/* LV 3 MODULES */
+#custom-distro {
+  font-size: 18.5px;
+  padding: 0 16px;
+  background-color: @accent;
+  color: @background;
+}
+
+#battery {
+  background-color: @background3;
+}
+
+/* BOTTOM BAR ############################################### */
+#custom-pill-prev,
+#custom-pill-next {
+  background-color: @background3;
+  color: @accent;
+}
+
+#custom-pill-focus {
+  background-color: @accent;
+  color: @background;
+}
