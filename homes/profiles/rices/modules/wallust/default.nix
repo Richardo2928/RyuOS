@@ -51,4 +51,25 @@ in
   xdg.configFile."wallust/templates".source = config.lib.file.mkOutOfStoreSymlink "${ryuosRoot}/homes/profiles/rices/modules/wallust/templates";
 
   xdg.configFile."wallust/schemes/gruvedGreen.json".text = builtins.toJSON scheme;
+
+  programs.bash.initExtra = ''
+    wallustcs() {
+      if [ -z "$1" ]; then
+        echo "Uso: wallustcs <nombre-del-esquema>"
+        return 1
+      fi
+      local scheme="$HOME/.config/wallust/schemes/$1.json"
+      if [ ! -f "$scheme" ]; then
+        echo "No existe: $scheme"
+        return 1
+      fi
+      wallust cs "$scheme"
+    }
+
+    _wallustcs_complete() {
+      local dir="$HOME/.config/wallust/schemes"
+      COMPREPLY=($(compgen -W "$(ls "$dir" 2>/dev/null | sed 's/\.json$//')" -- "''${COMP_WORDS[1]}"))
+    }
+    complete -F _wallustcs_complete wallustcs
+  '';
 }
