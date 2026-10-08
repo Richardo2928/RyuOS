@@ -43,6 +43,7 @@ in
         foot = { template = "foot.ini"; target = "~/.cache/wallust/foot/colors.ini"; };
         waybar = { template = "waybar.css"; target = "~/.cache/wallust/waybar/colors.css"; };
         fuzzel = { template = "fuzzel.ini"; target = "~/.cache/wallust/fuzzel/colors.ini"; };
+        ohmyposh = { template = "ohmyposh.toml"; target = "~/.cache/wallust/ohmyposh/colors.toml"; };
       };
     };
   };

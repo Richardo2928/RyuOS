@@ -1,0 +1,13 @@
+[palette]
+green_medium = {{color2}}
+red_primary = {{color1 | darken(0.1)}}
+bg_hard = {{background | darken(0.1)}}
+bg_elevated = {{background | lighten(0.2)}}
+blue_primary = {{color12}}
+black_hard = {{color0}}
+bg_high = {{color8}}
+bg_subtle = {{background | lighten(0.4)}}
+blue_medium = {{color12 | darken(0.1)}}
+orange_primary = {{color1 | blend(color11)}}
+fg_primary = {{foreground}}
+cyan_primary = {{color6 | lighten(0.1)}}
