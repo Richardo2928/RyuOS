@@ -8,7 +8,12 @@
     ./modules/waybar
     ./modules/wallust
   ];
-  home.packages = with pkgs; [] ++ [
+
+  fonts.fontconfig.enable = true;
+  home.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+  ] ++ [
     inputs.wlctl-flake.packages.${pkgs.system}.default
   ];
+ 
 }
