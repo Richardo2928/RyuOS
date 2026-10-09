@@ -4,6 +4,7 @@
     obsidian
 
     github-cli
+    gitnuro
 
     #texlive.combined.scheme-full
 
