@@ -12,7 +12,7 @@
   imports = [
     ./modules/nvim
     ./modules/btop.nix
-    ./modules/oh-my-posh.nix
+    ./modules/oh-my-posh
   ];
 
   # Packages
