@@ -9,7 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../profiles/rices/kokeRyu.nix
-      ../profiles/core/nixcore.nix
+      ../profiles/core/nixCore.nix
     ];
 
   # Bootloader.
