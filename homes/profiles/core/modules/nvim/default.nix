@@ -1,4 +1,4 @@
-{ pkgs, ryuosRoot, ... }:
+{ pkgs, ryuosRoot, config, ... }:
 {
   home.packages = with pkgs; [
     neovim
