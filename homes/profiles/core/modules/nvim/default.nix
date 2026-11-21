@@ -1,10 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, ryuosRoot, ... }:
 {
   home.packages = with pkgs; [
     neovim
   ];
 
-  xdg.configFile."nvim/init.lua".source = ./init.lua;
-  xdg.configFile."nvim/lua/config/options.lua".source = ./lua/config/options.lua;
-  xdg.configFile."nvim/lua/plugins/colorscheme.lua".source = ./lua/plugins/colorscheme.lua;
+  xdg.configFile."nvim/init.lua".source = config.lib.file.mkOutOfStoreSymlink "${ryuosRoot}/homes/profiles/core/modules/nvim/init.lua";
+  xdg.configFile."nvim/lua".source = config.lib.file.mkOutOfStoreSymlink "${ryuosRoot}/homes/profiles/core/modules/nvim/lua";
+  xdg.configFile."nvim/lazy-lock.json".source = config.lib.file.mkOutOfStoreSymlink "${ryuosRoot}/homes/profiles/core/modules/nvim/lazy-lock.josn";
 }
