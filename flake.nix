@@ -31,6 +31,11 @@
     username = "ricardo";
     ryuosRoot = "/home/${username}/RyuOS";
 
+    # pkgs
+    overlay = final: prev: {
+      ghost-sh = final.callPackage ./pkgs/ghost-sh.nix { };
+    };
+
     # Helper
     mkHost = host: nixpkgs.lib.nixosSystem {
       inherit system;
@@ -38,6 +43,7 @@
       specialArgs = { inherit inputs username ryuosRoot; };
 
       modules = [
+        { nixpkgs.overlays = [ overlay ]; }
         ./hosts/${host}/configuration.nix
         home-manager.nixosModules.home-manager
         {
@@ -48,8 +54,13 @@
         }
       ];
     };
-    # *---------------------------------------------------------------
+    # *-------------------------------------------------------------
   in {
+
+    overlays.default = overlay;
+    packages.${system}.ghost-sh = nixpkgs.legacyPackages.${system}.callPackage ./pkgs/ghost-sh.nix { };
+
+    # *-------------------------------------------------------------
     nixosConfigurations = {
       laptop = mkHost "laptop";
       #rdebian = mkHost "rdebian";

@@ -30,6 +30,8 @@
     gcc
 
     tree-sitter
+
+    ghost-sh
   ];
 
   # Programs
@@ -49,6 +51,9 @@
       baf = "bat $(fzf)";
       hmrestart = "systemctl restart home-manager-$(whoami).service";
     };
+    initExtra = ''
+      source ${pkgs.ghost-sh}/share/ghost/ghost.sh
+    '';
   };
 
   # Allow Home Manager to manage itself
