@@ -28,6 +28,8 @@
 
     gnumake
     gcc
+
+    tree-sitter
   ];
 
   # Programs
