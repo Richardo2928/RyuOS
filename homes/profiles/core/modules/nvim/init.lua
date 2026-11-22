@@ -82,8 +82,9 @@ require('nvim-treesitter.install').install({
 -- Activate Highlighting
 -- #################################################################
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { '<filetype>' },
-  callback = function() vim.treesitter.start() end,
+  callback = function(args)
+    pcall(vim.treesitter.start, args.buf)
+  end,
 })
 
 -- Neotree
