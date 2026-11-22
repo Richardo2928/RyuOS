@@ -25,6 +25,9 @@
     fzf
     eza
     bat
+
+    gnumake
+    gcc
   ];
 
   # Programs
