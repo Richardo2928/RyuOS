@@ -1,4 +1,4 @@
-{ pkgs, username, ... }:
+{ pkgs, username, lib, ... }:
 {
   # Basic user config
 	home.username = "${username}";
@@ -30,6 +30,8 @@
     gcc
 
     tree-sitter
+
+    blesh
   ];
 
   # Programs
@@ -49,6 +51,14 @@
       baf = "bat $(fzf)";
       hmrestart = "systemctl restart home-manager-$(whoami).service";
     };
+    # ble.sh -----
+    bashrcExtra = ''
+      [[ $- ==  *i* ]] && source ${pkgs.blesh}/share/blesh/ble.sh --noattach
+    '';
+    initExtra = lib.mkAfter ''
+      [[ ! ''${BLE_VERSION-} ]] || ble-attach
+    '';
+    # ------------
   };
 
   # Allow Home Manager to manage itself
